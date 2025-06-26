@@ -1,0 +1,5 @@
+<h1>Bienvenido al catálogo de Cursos!</h1>
+@let courses = courseList$ | async;
+@for(course of courses; track course.name){
+    <p>{{course.name}}</p>
+}
