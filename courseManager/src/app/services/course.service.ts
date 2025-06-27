@@ -14,7 +14,7 @@ private api = inject(HttpClient)
     return this.api.get(`${env.apiEndpoint}/course`) as Observable<Course[]>
   }
 
-  getDetailCourse(id: string): Observable<Course>{
+  getDetailCourse(id: number): Observable<Course>{
     return this.api.get(`${env.apiEndpoint}/course/${id}`) as Observable<Course>
   }
 
@@ -26,7 +26,7 @@ private api = inject(HttpClient)
     return this.api.put(`${env.apiEndpoint}/course`, course)
   }
 
-  deleteCourse(id: string): Observable<any>{
+  deleteCourse(id: number): Observable<any>{
     return this.api.delete(`${env.apiEndpoint}/course/${id}`)
   }
 }
