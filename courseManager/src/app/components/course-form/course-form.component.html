@@ -1,0 +1,32 @@
+<article class="p-20">
+  <div id="form-header">
+    <h2>Formulario de {{isEditMode? `Edición - curso ${courseForm.controls['name'].value}`:'Creación'}}</h2>
+  </div>
+  <form [formGroup]="courseForm" id="edit-form" (submit)="saveCourse()">
+    <mat-form-field>
+      <mat-label>Nombre del Curso</mat-label>
+      <input matInput formControlName="name" placeholder="Ingrese el nombre del curso">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Descripcion</mat-label>
+      <textarea matInput formControlName="description"></textarea>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Duracion (en horas)</mat-label>
+      <input matInput formControlName="duration" type="number" placeholder="Ingrese la duracion en horas">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Nivel</mat-label>
+      <mat-select formControlName="level">
+        <mat-option value="Basico">Básico</mat-option>
+        <mat-option value="Intermedio">Intermedio</mat-option>
+        <mat-option value="Avanzado">Avanzado</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Precio</mat-label>
+      <input matInput formControlName="price" type="number" placeholder="Ingrese el precio en pesos">
+    </mat-form-field>
+    <button mat-flat-button color="primary" type="submit" id="submit-form">Guardar Cambios</button>
+  </form>
+</article>
