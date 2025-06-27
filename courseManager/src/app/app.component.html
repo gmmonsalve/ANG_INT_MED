@@ -1,2 +1,9 @@
+<mat-toolbar>
+  <span>CourseDev</span>
+  <span class="example-spacer"></span>
+  <button mat-icon-button aria-label="Admin panel" (click)="toggleAdminView()">
+    <mat-icon>{{isAdminView? 'menu_book': 'admin_panel_settings'}} </mat-icon>
+  </button>
+</mat-toolbar>
 <router-outlet />
 
