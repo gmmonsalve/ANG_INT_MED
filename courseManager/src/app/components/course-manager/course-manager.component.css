@@ -1,0 +1,16 @@
+#actions{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#container{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+#add-course-button{
+  display: flex;
+  justify-content: flex-end;
+}

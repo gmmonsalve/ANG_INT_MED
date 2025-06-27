@@ -1,1 +1,71 @@
-<p>course-manager works!</p>
+ <div id="container" class="p-20">
+  <div>
+    <h1>Gestión de Cursos</h1>
+    <p>Administra los cursos disponibles en la plataforma.</p>
+  </div>
+  <div id="add-course-button">
+      <button mat-fab extended (click)="openCourseForm()">
+      <mat-icon>add</mat-icon>
+      Agregar Curso
+    </button>
+  </div>
+  <div>
+    @let data = courseList$ | async;
+    <table mat-table [dataSource]="data ?? []" >
+
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> Id </th>
+        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Nombre Curso </th>
+        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="description">
+        <th mat-header-cell *matHeaderCellDef> Descripcion </th>
+        <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="duration">
+        <th mat-header-cell *matHeaderCellDef> Duracion </th>
+        <td mat-cell *matCellDef="let element"> {{element.duration}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="level">
+        <th mat-header-cell *matHeaderCellDef> Nivel </th>
+        <td mat-cell *matCellDef="let element"> {{element.level}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="price">
+        <th mat-header-cell *matHeaderCellDef> Precio </th>
+        <td mat-cell *matCellDef="let element"> {{element.price | currency }} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef> Acciones </th>
+        <td mat-cell *matCellDef="let element"> 
+            <div id="actions">
+                <button mat-icon-button aria-label="Example icon button with a vertical three dot icon" (click)="openCourseForm(element)">
+                    <mat-icon>edit_square</mat-icon>
+                </button>
+                <button mat-icon-button aria-label="Example icon button with a vertical three dot icon" (click)="deleteCourse(element)">
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </div>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+  </div>
+ </div>
+ 
+
+<ng-container *ngIf="courseFormVisible">
+  @let courseDetail = courseDetail$ | async;
+  <app-course-form [courseData]="courseDetail" (courseSaved)="onCourseSaved()"></app-course-form>
+</ng-container>
