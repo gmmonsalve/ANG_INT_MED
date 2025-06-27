@@ -1,5 +1,22 @@
-<h1>Bienvenido al catálogo de Cursos!</h1>
+
+<h1 class="title">Bienvenido, al catálogo de Cursos</h1>
+
 @let courses = courseList$ | async;
-@for(course of courses; track course.name){
-    <p>{{course.name}}</p>
-}
+<mat-grid-list cols="4" rowHeight="1:1" gutterSize="15px">
+  @for(course of courses; track course.name){
+    <mat-grid-tile>
+      <mat-card class="course-card">
+        <mat-card-title class="title">{{course.name}}</mat-card-title>
+        <mat-card-content class="content">
+            <p>{{course.description}}</p>
+             <mat-chip-set aria-label="Fish selection">
+              <mat-chip>{{course.level}}</mat-chip>
+              <mat-chip>{{course.duration}}</mat-chip>
+            </mat-chip-set>
+            <p id="price">{{course.price | currency}}</p>
+            <button mat-flat-button>Inscripcion</button>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+  }
+</mat-grid-list>

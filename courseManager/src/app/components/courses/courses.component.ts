@@ -4,11 +4,13 @@ import { Observable } from 'rxjs';
 import { Course } from '../../interfaces/course.interface';
 import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { MatButtonModule } from '@angular/material/button';
+import { MatChipsModule } from '@angular/material/chips';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-courses',
-  imports: [MatCardModule, MatGridListModule, CommonModule],
+  imports: [MatCardModule, MatGridListModule, MatButtonModule, MatChipsModule, CommonModule],
   templateUrl: './courses.component.html',
   styleUrl: './courses.component.css'
 })
